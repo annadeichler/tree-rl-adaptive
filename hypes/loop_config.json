@@ -1,0 +1,13 @@
+  {
+    "learning_rate": {
+        "values" : [0.001, 0.005]
+    },
+   "n_mcts":{
+        "values":[32]
+   },
+   "max_wallclock_time":{
+        "values": [2000]
+   }
+
+}
+

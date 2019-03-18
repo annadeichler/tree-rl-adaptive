@@ -1,0 +1,61 @@
+{
+    "environment": "Acrobot-v1", 
+    "use_tree_search": true, 
+    "random_seed": 50, 
+    "max_wallclock_time": 5000, 
+    "c_epoch": 0.0, 
+    "numpy_seed": 53, 
+    "update_db": true, 
+    "env_str": "Acrobot-v1", 
+    "update_freq": 1, 
+    "db_size": 5000, 
+    "max_ep_steps": 200, 
+    "solver": {
+        "rnd_seed": 1, 
+        "epsilon": 0.0001, 
+        "learning_rate": 0.0005, 
+        "optimizer": "Adam", 
+        "clip_norm": 2.0
+    }, 
+    "tree_search": {
+        "adaptive":true,
+        "n_mcts": 8, 
+        "n_mcts_mul": 1.5, 
+        "n_mcts_min": 8, 
+        "n_mcts_max": 64, 
+        "n_mcts_base": 16, 
+        "root_count_type": "default", 
+        "bootstrap": true, 
+        "verbose_tree": false, 
+        "eta": 1000, 
+        "use_prior": true, 
+        "action_init_value": "value", 
+        "use_expl_bias": 1, 
+        "temp": 1.0, 
+        "gamma": 1.0, 
+        "ucb_param": 0.2,
+        "ucb_min": 0.05, 
+        "ucb_decay_steps": 5000, 
+        "ucb_max": 1.0
+    }, 
+    "nn": {
+        "hidden_2": 256, 
+        "c_epoch": 0, 
+        "batch_size": 16, 
+        "recent": true, 
+        "beta_POP": 0.001, 
+        "hidden_1": 256, 
+        "n_epoch": 1, 
+        "update_freq": 1
+    }, 
+    "train_network": true, 
+    "same_hidden": true, 
+    "model": {
+        "tree_file": "tree_search/MCTS_openai_adaptive.py", 
+        "agent_type": "alphago", 
+        "network_file": "models/alphago_agent_pybullet.py", 
+        "optimizer_file": "optimizer/optimizer.py"
+    }, 
+    "use_target_network": false, 
+    "env_seed": 10
+}

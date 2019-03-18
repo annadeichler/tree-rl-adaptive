@@ -1,0 +1,54 @@
+{
+    "use_tree_search": true, 
+    "max_wallclock_time": 20000, 
+    "env_str":"Racecar-v0",
+    "c_epoch": 0.0, 
+    "solver": {
+        "rnd_seed": 1, 
+        "epsilon": 1e-05, 
+        "learning_rate": 0.001, 
+        "optimizer": "Adam", 
+        "clip_norm": 2.0
+    }, 
+    "tree_search": {
+        "ucb_param": 0.75, 
+        "temp": 1.0, 
+        "ucb_min": 0.05, 
+        "bootstrap": true, 
+        "verbose_tree": false, 
+        "ucb_max": 1.0, 
+        "use_expl_bias": 1, 
+        "ucb_decay_steps": 1500, 
+        "use_prior": true, 
+        "action_init_value": "value", 
+        "n_mcts": 32, 
+        "pure_mcts": false, 
+        "root_count_type": "default", 
+        "gamma": 1.0, 
+        "eta":1000,
+        "n_mcts_min": 4
+    }, 
+    "update_db": true, 
+    "db_size": 5000, 
+    "max_ep_steps": 20, 
+    "nn": {
+        "hidden_1": 256, 
+        "n_epoch": 1, 
+        "hidden_2": 128, 
+        "batch_size": 16,
+        "eta":1000, 
+        "beta_POP":1e-2,
+        "update_freq": 1
+    }, 
+    "train_network": true, 
+    "model": {
+        "tree_file": "tree_search/MCTS_pybullet_adaptive.py", 
+        "agent_type": "alphago", 
+        "network_file": "models/alphago_agent_pybullet.py", 
+        "optimizer_file": "optimizer/optimizer.py"
+    }, 
+    "update_freq": 1, 
+    "same_hidden": true, 
+    "use_target_network": false, 
+    "env_seed":  111
+}
