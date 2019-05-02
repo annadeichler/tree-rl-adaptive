@@ -5,7 +5,7 @@ runs episodic RL training with given hyperparameters for specified openai enviro
 executes one episode of training as subprocess for managing gym environment memory leak
 
 example:
-python train_pybullet.py --environment Racecar-v0 --hyperparameters hypes/alphago_racecar.json 
+python train_openai.py --environment Racecar-v0 --hyperparameters hypes/alphago_racecar.json 
                             --outdir /home/../../ 
                             --output  example_output_name
                             --continue_training True
