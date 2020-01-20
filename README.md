@@ -2,7 +2,7 @@
 AlphaZero algorithm modified to be compatible with single-player deterministic environments with adaptive return normalization in Monte Carlo tree search (MCTS) and optionally adaptive root return variance based MCTS iterations.
 
 ## Requirements
-Code runs with Tensorflow 1.5, requirements listed in requirements.txt
+Code runs with Tensorflow 1.4, requirements listed in requirements.txt
 
 ## Tutorial
 - Training scripts are assumed to be specified in json format in /hypes folder.
