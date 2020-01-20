@@ -109,10 +109,10 @@ class RaceCarEnvWrapper(gym.Wrapper):
 		# self.env = env
 
 		self.name = name
-		self.env_name = self.env.env.__class__.__name__
+		self.env_name = self.env.__class__.__name__
 		# self.env_seed = env_seed
 		# remove time limit wrapper
-		self.env = env.env
+		self.env = env
 		# self._p=self.env._p
 		self.checkpoint_counter = None
 		self.checkpoint = None

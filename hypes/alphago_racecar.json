@@ -26,6 +26,7 @@
         "root_count_type": "default", 
         "gamma": 1.0, 
         "eta":1000,
+        "adaptive":false,
         "n_mcts_min": 4
     }, 
     "update_db": true, 
@@ -44,7 +45,7 @@
     "model": {
         "tree_file": "tree_search/MCTS_pybullet_adaptive.py", 
         "agent_type": "alphago", 
-        "network_file": "models/alphago_agent_pybullet.py", 
+        "network_file": "models/alphago_agent.py", 
         "optimizer_file": "optimizer/optimizer.py"
     }, 
     "update_freq": 1, 

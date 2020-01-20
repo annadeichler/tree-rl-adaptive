@@ -18,7 +18,7 @@ register(
 register(
         id='RacecarBulletDiscreteEnvLocal-v0',
     entry_point='utils.racecar:RacecarGymEnv',
-    timestep_limit=1000,
+    # timestep_limit=1000,
     reward_threshold=5.0,
         kwargs={'isDiscrete': True } 
 
@@ -26,14 +26,14 @@ register(
 register(
 	id='RacecarBulletDiscreteEnv-v0',
     entry_point='utils.racecarGymEnv:RacecarGymEnv',
-    timestep_limit=5000,
+    # timestep_limit=5000,
     reward_threshold=5.0,
 	kwargs={'isDiscrete': True } 
 )
 register(
     id='KukaDiscreteEnv-v0',
     entry_point='utils.kukaGymEnv:KukaGymEnv',
-    timestep_limit=1000,
+    # timestep_limit=1000,
     reward_threshold=5.0,
     kwargs={'isDiscrete': True} 
 )

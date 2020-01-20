@@ -86,7 +86,7 @@ def start_session(
 	tf.contrib.layers.summarize_collection(tf.GraphKeys.BIASES)
 
 	for variable in slim.get_model_variables():
-	    tf.summary.histogram(variable.op.name, variable)
+		tf.summary.histogram(variable.op.name, variable)
 
 	summary_op = tf.summary.merge_all()
 
@@ -144,15 +144,15 @@ def get_env(
 	"""
 	environment from multiprocessing dict for unpickable environments
 	"""
-    if 'LunarLander' in type(modules['environment']).__name__:
-        env = LunarLanderWrapper(gym.make('LunarLander-v2'),modules['environment'].name,hypes['env_seed'])
-        d_env, d_envenv, np_rand = d['env']
-        [setattr(env.env,key,d_env[key]) for key in d_env.keys()]
-        [setattr(env.env.env,key,d_envenv[key]) for key in d_envenv.keys()]
-        env.reset()
-        return env
-    else:
-        return d['env']
+	if 'LunarLander' in type(modules['environment']).__name__:
+		env = LunarLanderWrapper(gym.make('LunarLander-v2'),modules['environment'].name,hypes['env_seed'])
+		d_env, d_envenv, np_rand = d['env']
+		[setattr(env.env,key,d_env[key]) for key in d_env.keys()]
+		[setattr(env.env.env,key,d_envenv[key]) for key in d_envenv.keys()]
+		env.reset()
+		return env
+	else:
+		return d['env']
 
 def load_modules(
 	hypes, 				# dict of hyperparameters of experiment
@@ -178,25 +178,25 @@ def load_modules(
 def load_weights(
 	checkpoint_dir,		# str, checkpoint directory path
 	tf_sess):			# tensorflow session
-    """
-    load the weights of a model stored in saver, returns training step of checkpoint
-    """
-    sess = tf_sess['sess']
-    saver = tf_sess['saver']
-    ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
-    if ckpt and ckpt.model_checkpoint_path:
-        # logging.info(ckpt.model_checkpoint_path)
-        file = os.path.basename(ckpt.model_checkpoint_path)
-        checkpoint_path = os.path.join(checkpoint_dir, file)
-        print(checkpoint_path)
-        saver.restore(sess, checkpoint_path)
-        return int(file.split('-')[1])
+	"""
+	load the weights of a model stored in saver, returns training step of checkpoint
+	"""
+	sess = tf_sess['sess']
+	saver = tf_sess['saver']
+	ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
+	if ckpt and ckpt.model_checkpoint_path:
+		# logging.info(ckpt.model_checkpoint_path)
+		file = os.path.basename(ckpt.model_checkpoint_path)
+		checkpoint_path = os.path.join(checkpoint_dir, file)
+		print(checkpoint_path)
+		saver.restore(sess, checkpoint_path)
+		return int(file.split('-')[1])
 
-    # CHECKPOINT_NAME = path to save file
-    # restored_vars  = get_tensors_in_checkpoint_file(file_name=CHECKPOINT_NAME)
-    # tensors_to_load = build_tensors_in_checkpoint_file(restored_vars)
-    # loader = tf.train.Saver(tensors_to_load)
-    # loader.restore(sess, CHECKPOINT_NAME)
+	# CHECKPOINT_NAME = path to save file
+	# restored_vars  = get_tensors_in_checkpoint_file(file_name=CHECKPOINT_NAME)
+	# tensors_to_load = build_tensors_in_checkpoint_file(restored_vars)
+	# loader = tf.train.Saver(tensors_to_load)
+	# loader.restore(sess, CHECKPOINT_NAME)
 
 
 def load_weights_v2(
@@ -218,9 +218,9 @@ def session_saver(
 	tf_sess,			# tensorflow sessin
 	hypes,				# dict of hyperparameters
 	ckpdir):			# str, checkpoint directory path
-    sess = tf_sess['sess']
-    saver = tf_sess['saver']
-    #[os.remove(filename) for filename in glob.glob(str(ckpdir) + '/model*')]
-    checkpoint_path = os.path.join(ckpdir,
-                                           'model.ckpt')
-    tf_sess['saver'].save(sess, checkpoint_path, hypes['solver']['global_step'])
+	sess = tf_sess['sess']
+	saver = tf_sess['saver']
+	#[os.remove(filename) for filename in glob.glob(str(ckpdir) + '/model*')]
+	checkpoint_path = os.path.join(ckpdir,
+										   'model.ckpt')
+	tf_sess['saver'].save(sess, checkpoint_path, hypes['solver']['global_step'])

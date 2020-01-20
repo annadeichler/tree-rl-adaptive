@@ -53,7 +53,7 @@ def MCTS(
 
 	# perform N MCTS iterations
 	for i in range(int(N)):  
-		MCTS_step(Env,root,sess,model,c,g,use_prior,use_expl_bias,bootstrap,init_value)
+		MCTS_step(env,root,sess,model,c,gamma,use_prior,use_expl_bias,bootstrap,init_value)
 	env.restore_checkpoint()
 
 	# adaptive variance-based MCTS, increas MCTS iterations if variance high	
@@ -72,13 +72,13 @@ def MCTS(
 		# execute additional MCTS iterations
 		if N_adt>N_min: 
 			for i in range(int(N_adt)): 
-				MCTS_step(Env,root,sess,model,c,g,use_prior,use_expl_bias,bootstrap,init_value)
+				MCTS_step(Env,root,sess,model,c,gamma,use_prior,use_expl_bias,bootstrap,init_value)
 
-	# get policy temperature parameter based on variance-based
-	if ratio < 0.5 and ep>25:
-		(model.get_policy_temp(model.curr_var/model.avg_returnVar))
-	else:
-		model._temp = 1.
+		# get policy temperature parameter based on variance-based
+		if ratio < 0.5 and ep>25:
+			(model.get_policy_temp(model.curr_var/model.avg_returnVar))
+		else:
+			model._temp = 1.
 
 	# save tree information for visualization
 	# if ep % 20 == 0:

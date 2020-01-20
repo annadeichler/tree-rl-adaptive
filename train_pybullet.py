@@ -36,7 +36,7 @@ import matplotlib.pyplot as plt
 from utils.utils_tf import *
 from utils.utils import run_as_process
 
-gym.undo_logger_setup()
+# gym.undo_logger_setup()
 logging.basicConfig(filename='training.log',level=logging.WARNING)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
@@ -75,6 +75,9 @@ def run_training(
     states =[]
     actions = []
     print("start training")
+    print(env)
+    agent.select_action(hypes,modules,env,tf_sess['sess'],root_index, env_reset, t, t_all,ep,treedir)
+
     while (time.time() < t_end):
         terminal = False
         t,R = 0, 0.0
@@ -102,7 +105,6 @@ def run_training(
             except:AttributeError
             a, stats = agent.select_action(hypes,modules,env,tf_sess['sess'],root_index, env_reset, t, t_all,ep,treedir)
             s1, r ,terminal, _ = env.step(a)
-            child_priors.append(agent.child_priors)
             env.save_checkpoint()
             actions.append(a)
             states.append(s1)
@@ -225,12 +227,13 @@ def do_training(
         summary = tf.Summary()
         loop_start = time.time()
         print(hyperparams)
+        print(modules)
         results, results_mcts  = run_training(hyperparams, modules, graph, tf_sess, outdir, ckpdir,treedir,output)
-        print("ended in " + str(time.time() - loop_start))
-        with open(os.path.join(outdir, str(output)+'_main.pkl'), 'wb') as f:
-            pickle.dump(results, f)
-        with open(os.path.join(outdir, str(output) + '_mcts.pkl'), 'wb') as f:
-            pickle.dump(results_mcts, f)
+        # print("ended in " + str(time.time() - loop_start))
+        # with open(os.path.join(outdir, str(output)+'_main.pkl'), 'wb') as f:
+        #     pickle.dump(results, f)
+        # with open(os.path.join(outdir, str(output) + '_mcts.pkl'), 'wb') as f:
+        #     pickle.dump(results_mcts, f)
 
 
 def parse_args():

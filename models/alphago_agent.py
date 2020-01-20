@@ -18,7 +18,8 @@ import time
 from collections import deque
 from copy import deepcopy
 
-from utils.utils import display_info, Database, check_space
+# from utils.utils import display_info, Database, check_space
+from utils.utils import Database, check_space
 from utils.utils_tf import load_weights, build_training_graph
 
 class agent():
