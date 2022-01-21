@@ -5,7 +5,7 @@ decorator==4.4.0
 h5py==2.10.0
 -e git+https://github.com/openai/gym.git@f4a127bdcf369648e7a2ffe2b934fa393c942b67#egg=gym
 ipykernel==4.10.1
-ipython==5.8.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 ipywidgets==7.5.1
 jsonschema==3.1.1
